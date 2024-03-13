@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     aetheryte (0.0.0)
-      nokogiri
+      nokogiri (~> 1.16)
 
 GEM
   remote: https://rubygems.org/

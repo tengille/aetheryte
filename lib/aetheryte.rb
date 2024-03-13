@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
+# gems
+# require 'pry' # uncomment for debugging
 require 'nokogiri'
 require 'open-uri'
-require 'ostruct'
 
-require_relative 'character'
-require_relative 'character_parser'
-require_relative 'job_parser'
+# files
+require 'aetheryte/character'
+require 'aetheryte/character_parser'
+require 'aetheryte/job_parser'
 
 # Hear. Feel. Think.
 module Aetheryte
@@ -23,8 +25,8 @@ module Aetheryte
 
     url = "#{BASE_URL}/#{id}"
     res = URI.parse(url).open
-
     doc = Nokogiri::HTML(res)
+
     Aetheryte::ChracterParser.new(doc:, id:).parse!
   rescue OpenURI::HTTPError
     raise Error, NOT_FOUND_MSG
